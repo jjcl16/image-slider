@@ -1,0 +1,26 @@
+
+
+/*PC and tablets*/
+@media ( min-width: 481px  ){
+
+  body{
+    background-color: rgba(0,0,0,0);
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  img {
+    width: 20vw;
+  }
+
+  button{
+    width: 5vw;
+    height: 10vh;
+  }
+}
+
+
+/*Mobile format*/
+@media ( max-width: 480px  ){
+
+}
