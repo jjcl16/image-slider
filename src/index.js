@@ -6,10 +6,6 @@ function importAll(r) {
   return images;
 }
 
-const images = importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
-const imagesNames = Object.keys(images);
-
-//import images from "../images/pruebaa.jpeg";
 
 // Creating DOM
 /*
@@ -20,10 +16,12 @@ const imagesNames = Object.keys(images);
       <button id="right">>DERECHAs</button>      
     </div>
 <div id="sliderContainer"></div>
+<div id="footer"></div>
 */
 const body = document.querySelector("body");
 const title = document.createElement("div");
 title.setAttribute("id","title");
+title.textContent = "DASHBOARD TITLE"
 const generalContainer = document.createElement("div");
 generalContainer.setAttribute("id", "generalContainer");
 const imageContainer = document.createElement("div");
@@ -48,12 +46,23 @@ body.appendChild(title);
 body.appendChild(generalContainer);
 body.appendChild(slidebar);
 
+
 const imagen = document.createElement("img");
-imagen.setAttribute("src", images['1.jpg'].default);
-//console.log(imagen.src.split("/"));
+imagen.setAttribute("id", "imageDisplayed");
 
-body.appendChild(imagen);
+// Imagen loader
+//import images from "../images/pruebaa.jpeg";
+const images = importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
+const imagesNames = Object.keys(images);
+//
 
+imagen.setAttribute("src", images[imagesNames[0]].default);
+imageContainer.appendChild(imagen);
+
+
+const footer = document.createElement("div");
+footer.setAttribute("id", "footer");
+body.appendChild(footer);
 
 
 function goLeft(){
