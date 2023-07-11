@@ -68,6 +68,7 @@ imageContainer.appendChild(imagen);
 
 const footer = document.createElement("div");
 footer.setAttribute("id", "footer");
+footer.textContent = "Created by Jenner Caraballo"
 body.appendChild(footer);
 //console.log(imagesNames[0]);
 removeFade();
@@ -128,6 +129,7 @@ function removeSlidebarImageShowing(){
 
 /** event functions  */
 function goLeft(){
+  startCountDown();
   removeSelectedDot();
   removeSlidebarImageShowing();
   const imageName = checkImageName(imagen.src);//checkImageShowing();
@@ -148,6 +150,7 @@ function goLeft(){
 }
 
 function goRight(){
+  startCountDown();
   removeSelectedDot();
   removeSlidebarImageShowing();
   const imageName = checkImageName(imagen.src);//checkImageShowing();
@@ -182,6 +185,7 @@ function removeFade(){
 }
 
 function selectPicture(e){
+  startCountDown();
   removeSelectedDot();
   removeSlidebarImageShowing();
   let imageName;
@@ -196,3 +200,15 @@ function selectPicture(e){
   slidebarImageShowing(imageName);
   removeFade();
 }
+
+let interval = setInterval(goRight, 5000);
+//Timer change image
+function startCountDown(){
+  clearInterval(interval);
+  interval = setInterval(goRight, 5000);
+}
+
+//const interval = setInterval(goRight, 5000); 
+
+window.addEventListener(`mousemove`, startCountDown);
+
